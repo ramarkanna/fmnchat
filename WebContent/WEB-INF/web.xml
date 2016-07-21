@@ -50,4 +50,21 @@
     <servlet-name>cometd</servlet-name>
     <url-pattern>/cometd/*</url-pattern>
   </servlet-mapping>
+  
+  <filter>
+    <filter-name>RequestLoggingFilter</filter-name> <!-- mandatory -->
+    <filter-class>com.fmn.cometd.CORSFilter</filter-class> <!-- mandatory -->
+    <init-param> <!-- optional -->
+    <param-name>fmn</param-name>
+    <param-value>freshmeals</param-value>
+    </init-param>
+  </filter>
+  
+  <filter-mapping>
+    <filter-name>RequestLoggingFilter</filter-name> <!-- mandatory -->
+    <url-pattern>/*</url-pattern> <!-- either url-pattern or servlet-name is mandatory -->
+    <servlet-name>RequestLoggingFilter</servlet-name>
+    <dispatcher>REQUEST</dispatcher>
+  </filter-mapping>
+  
 </web-app>
